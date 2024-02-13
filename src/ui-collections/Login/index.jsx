@@ -18,7 +18,8 @@ const Main = () => {
 
     if (res && res.data.success) {
       setResult('Login successful');
-      navigate('/home', { state: { props: res.data.result[0].name, result} });
+      document.cookie = `token = ${res.data.token}`;
+      navigate('/home');
     } else {
       console.log(res);
       setResult(res.data.message);
